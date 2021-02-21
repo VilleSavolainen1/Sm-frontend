@@ -1,0 +1,243 @@
+* {
+    box-sizing: border-box;
+}
+
+.signin {
+   margin: 50px auto 10px;
+   width: 500px;
+   box-shadow: 0 5px 15px 0 rgba(37, 37, 37, 0.5);
+   height: 280px;
+   background-color:rgb(17, 19, 48)
+}
+
+.register {
+    margin: 50px auto 10px;
+    width: 500px;
+    box-shadow: 0 5px 15px 0 rgba(37, 37, 37, 0.5);
+    height: 380px;
+    background-color: rgb(17, 19, 48)
+}
+
+.signinform {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signintitle {
+    padding: 20px 9px 6px 9px;
+    font-size: 26px;
+    height: 50px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.formrow {
+    margin: 0 auto;
+    padding: 2px;
+    text-align: center;
+}
+
+.formrow .input {
+    font-size: 15px;
+    color: #cacaca;
+    border: 1px solid #282828;
+    padding: 6px;
+    display: block;
+    line-height: 1.4;
+    text-align: left;
+    background-color: #333;
+}
+
+.block {
+    text-align: center;
+}
+
+
+.form-control {
+    width: 200px;
+    font-size: 18px;
+    box-shadow: none;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #8a92a3;
+}
+
+.form-submit {
+    font-size: 14px;
+    font-weight: 700;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #e2610b;
+    border: 0;
+    border-radius: 4px;
+}
+
+.deleteimage {
+    font-size: 14px;
+    font-weight: 700;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #ff0101;
+    border: 0;
+    border-radius: 4px;
+}
+
+.deleteimage:hover {
+    background-color: #ff6565;
+}
+
+.form-submit:hover {
+    background-color: #e08a50;
+}
+
+.messageForm {
+    margin: 0 auto;
+   width: 500px;
+   height: 280px;
+}
+
+.messagebox {
+    width: 400px;
+    height: 60px;
+}
+
+.header {
+    font-size: 25px;
+}
+
+
+.navigation {
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(2, 7, 68), rgb(6, 11, 26)) repeat scroll 0% 0%;
+    box-shadow: 10px 10px 10px 0 rgba(28, 30, 70, 0.5);
+    height: 60px;
+    max-width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+.nav-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+#nav {
+    max-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.nav-inner {
+    max-width: 100%;
+    padding: 20px 12px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+}
+
+.nav-links {
+    margin-left: 25px;
+}
+
+
+#username {
+    margin-left: 10px;
+    font-weight: bold;
+    color: greenyellow;
+    font-size: 20px;
+}
+
+#link {
+    justify-content: flex-end;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 20px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+#link:hover {
+    color: greenyellow;
+}
+
+.nav-right {
+    margin-left: auto;
+    margin-right: 10px;
+    float: left;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.feed {
+    margin-top: 400px;
+    color: #000;
+}
+
+.profile {
+    margin-top: 5px;
+}
+
+.frontheader {
+    padding-top: 5px;
+}
+
+.frontblock {
+    margin-top: 50px;
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+}
+
+.images {
+    list-style: none;
+    display: block;
+    float: left;
+}
+
+.frontimage {
+    width: 250px;
+    height: 200px;
+    margin: 5px;
+    cursor: pointer;
+    display: block;
+    opacity: 0.8;
+}
+
+.frontimage:hover {
+    opacity: 1;
+}
+
+.bigImage:hover{
+    opacity: 0.9;
+}
+
+.messagefeed {
+    display: flex;
+    margin-left: 350px;
+    padding: 0;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+    width: 50%;
+}
+
+@media(max-width: 800px){
+    .bigImage{
+        max-width: 100%;
+    }
+
+    .frontblock{
+        max-width: 100%;
+    }
+}
+
+
