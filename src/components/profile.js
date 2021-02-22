@@ -23,12 +23,14 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
 
     //Render messages
     const showMessages = messages.map(user => {
+        const time = user.date.split("T")[0].split("-").reverse().join('.')
         return (
-            <div className="messagefeed">
-                <h3 style={{ margin: '15px' }}>{user.username}</h3>
-                <p>{user.date}</p>
-                <p style={{ marginLeft: '20px' }}>{user.message}</p>
-            </div>
+            <ul className="messageList">
+                <li className="messagefeed">
+                    <div className="name">{user.username}</div>
+                    <div className="message">{user.message}</div>
+                </li>
+            </ul>
         )
     })
 
@@ -40,7 +42,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
             .then(msg => {
                 setMessages(msg.data)
             })
-            !viewimage ? setViewimage(true) : setViewimage(false)
+        !viewimage ? setViewimage(true) : setViewimage(false)
     }
 
 

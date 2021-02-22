@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styledComponents.css';
+import Drawertoggle from './SideDrawer/Drawertoggle';
+import Sidedrawer from './SideDrawer/Sidedrawer';
 
 const Navigation = ({ user, setUser, onRouteChange }) => {
+
+    const [showSidebar, setShowsidebar] = useState(false);
+
 
     const exit = () => {
         localStorage.clear();
@@ -15,6 +20,8 @@ const Navigation = ({ user, setUser, onRouteChange }) => {
             <div className="nav-wrapper">
                 <nav id="nav">
                     <div className="nav-inner">
+                    <Drawertoggle showSidebar={showSidebar} setShowsidebar={setShowsidebar} />
+                    {showSidebar ? <Sidedrawer user={user} onRouteChange={onRouteChange} setShowsidebar={setShowsidebar} setUser={setUser} /> : null}
                         <a id="username">{user}</a>
                         {user !== 'Vieras' ?
                             <div className="nav-links">

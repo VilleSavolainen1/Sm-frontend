@@ -1,0 +1,26 @@
+.side-drawer{
+    height: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 65px;
+    background: rgb(17, 19, 48);
+    width: 200px;
+}
+
+.link-list{
+    list-style: none;
+    text-align: left;
+    margin-top: 30px;
+    padding: 0;
+}
+
+.drawerlink {
+    justify-content: flex-end;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px 20px;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
