@@ -22,7 +22,7 @@ const Navigation = ({ user, setUser, onRouteChange }) => {
                     <div className="nav-inner">
                     <Drawertoggle showSidebar={showSidebar} setShowsidebar={setShowsidebar} />
                     {showSidebar ? <Sidedrawer user={user} onRouteChange={onRouteChange} setShowsidebar={setShowsidebar} setUser={setUser} /> : null}
-                        <a id="username">{user}</a>
+                        {user !== 'Vieras' ? <a id="username">{user}</a> : null}
                         {user !== 'Vieras' ?
                             <div className="nav-links">
                                 <a id="link" onClick={() => onRouteChange('/home')}>Etusivu</a>

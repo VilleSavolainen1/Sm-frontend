@@ -35,7 +35,12 @@ const View = ({ viewprofile, images, user, post, setPost, imagemessages, setImag
             .then(msg => {
                 setMessages(msg.data)
             })
-        !viewimage ? setViewimage(true) : setViewimage(false)
+            if(!viewimage){
+                setMessages([])
+                setViewimage(true)
+            }else{
+                setViewimage(false)
+            }
     }
 
     return (

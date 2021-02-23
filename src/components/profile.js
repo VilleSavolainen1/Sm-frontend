@@ -11,7 +11,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
     const [messages, setMessages] = useState([])
 
 
-    //Render all images
+    //Show all images
     const showImages = images.map(i => {
         return (
             <li className="images" key={i}>
@@ -21,7 +21,8 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
     })
 
 
-    //Render messages
+    
+    //Get messages
     const showMessages = messages.map(user => {
         const time = user.date.split("T")[0].split("-").reverse().join('.')
         return (
@@ -42,7 +43,12 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
             .then(msg => {
                 setMessages(msg.data)
             })
-        !viewimage ? setViewimage(true) : setViewimage(false)
+            if(!viewimage){
+                setMessages([])
+                setViewimage(true)
+            }else{
+                setViewimage(false)
+            }
     }
 
 

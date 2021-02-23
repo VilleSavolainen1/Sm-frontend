@@ -5,17 +5,13 @@
 .signin {
    margin: 50px auto 10px;
    width: 500px;
-   box-shadow: 0 5px 15px 0 rgba(37, 37, 37, 0.5);
    height: 280px;
-   background-color:rgb(17, 19, 48)
 }
 
 .register {
     margin: 50px auto 10px;
     width: 500px;
-    box-shadow: 0 5px 15px 0 rgba(37, 37, 37, 0.5);
     height: 380px;
-    background-color: rgb(17, 19, 48)
 }
 
 .signinform {
@@ -101,6 +97,10 @@
    height: 280px;
 }
 
+.uploadform {
+    margin-top: 10px;
+}
+
 .messagebox {
     width: 420px;
     height: 80px;
@@ -115,9 +115,8 @@
 
 .navigation {
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(2, 7, 68), rgb(6, 11, 26)) repeat scroll 0% 0%;
-    box-shadow: 10px 10px 10px 0 rgba(28, 30, 70, 0.5);
-    height: 60px;
+    background: #060916;
+    height: 65px;
     width: 100%;
     position: sticky;
     top: 0;
@@ -191,10 +190,12 @@
 
 .frontheader {
     padding-top: 5px;
+    margin-top: 10px;
 }
 
 .frontblock {
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -308,6 +309,9 @@
     }
     .formrow{
         width: 100%;
+    }
+    .form-control{
+        height: 38px;
     }
     .messagebox{
         width: 100%;

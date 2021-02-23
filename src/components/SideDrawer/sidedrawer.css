@@ -3,8 +3,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    margin-top: 65px;
-    background: rgb(17, 19, 48);
+    margin-top: 60px;
+    background: #060916;
     width: 200px;
 }
 
@@ -20,7 +20,7 @@
     color: #fff;
     font-weight: 600;
     cursor: pointer;
-    padding: 5px 20px;
+    padding: 15px 20px;
     font-size: 24px;
     letter-spacing: 1px;
 }
