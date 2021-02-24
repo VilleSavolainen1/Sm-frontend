@@ -3,10 +3,9 @@ import './styledComponents.css';
 import Drawertoggle from './SideDrawer/Drawertoggle';
 import Sidedrawer from './SideDrawer/Sidedrawer';
 
-const Navigation = ({ user, setUser, onRouteChange }) => {
+const Navigation = ({ user, setUser, onRouteChange, unseenmessages, messagecount, setMessagecount }) => {
 
     const [showSidebar, setShowsidebar] = useState(false);
-
 
     const exit = () => {
         localStorage.clear();

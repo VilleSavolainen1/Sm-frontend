@@ -15,12 +15,13 @@ const View = ({ viewprofile, images, user, post, setPost, imagemessages, setImag
         )
     })
 
+
     const showMessages = messages.map(user => {
         const time = user.date.split("T")[0].split("-").reverse().join('.');
         return (
             <ul key={user.id} className="messageList">
                 <li className="messagefeed">
-                    <div className="name">{user.username}</div>
+                    <div className="name">{user.sender}</div>
                     <div className="message">{user.message}</div>
                 </li>
             </ul>
@@ -50,12 +51,12 @@ const View = ({ viewprofile, images, user, post, setPost, imagemessages, setImag
                 <div className="frontblock">
                     {!viewimage ? showImages :
                         <div>
-                            <img className="bigImage" style={{ cursor: 'pointer', width: '700px' }} src={current} alt="" onClick={() => setViewimage(false)}></img>
+                            <img className="bigImage" style={{ cursor: 'pointer', width: '800px' }} src={current} alt="" onClick={() => setViewimage(false)}></img>
                             {user !== 'Vieras' ?
                                 <div>
                                     <h3>Kommentit:</h3>
                                     {showMessages}
-                                    <WriteMessage current={current} user={user} post={post} setPost={setPost} setMessages={setMessages} />
+                                    <WriteMessage current={current} user={user} post={post} setPost={setPost} setMessages={setMessages} viewprofile={viewprofile} />
 
                                 </div>
                                 : null}

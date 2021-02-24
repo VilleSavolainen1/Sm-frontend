@@ -28,7 +28,9 @@ function App() {
   const [usersList, setUserslist] = useState([]);
   const [loading, setLoading] = useState(false);
   const [imagemessages, setImagemessages] = useState(null);
-  const [showmessages, setShowmessages] = useState([]);
+  const [unseenmessages, setUnseenmessages] = useState();
+  const [messagecount, setMessagecount] = useState(0);
+
 
   let addresses = [];
   let users = [];
@@ -43,6 +45,16 @@ function App() {
       })
     setUserslist(users)
   }, [])
+
+
+  useEffect(() => {
+    if(user !== 'Vieras'){
+      axios.post('http://localhost:3001/unseen', {receiver: username})
+      .then(r => {
+        setUnseenmessages(r)
+      })
+    }
+  }, [user])
 
 
 
@@ -112,6 +124,7 @@ function App() {
   }
 
 
+
   function signIn(e) {
     e.preventDefault();
     if (username.length === 0 || password.length === 0) {
@@ -144,7 +157,7 @@ function App() {
   return (
     <div className="container">
       <header id="header">
-        <Navigation user={user} setUser={setUser} onRouteChange={onRouteChange} />
+        <Navigation user={user} setUser={setUser} onRouteChange={onRouteChange} unseenmessages={unseenmessages} messagecount={messagecount} setMessagecount={setMessagecount} />
       </header>
       {user === 'Vieras' && route === '/signin' ?
         <Signin setUser={setUser} setRoute={setRoute} username={username} setUsername={setUsername} password={password} setPassword={setPassword} setError={setError} signIn={signIn} error={error} /> : null
@@ -156,7 +169,7 @@ function App() {
         <div className="body-content">
           <div className="center">
             <FrontPage user={user} setRoute={setRoute} />
-            <h1 style={{fontWeight: 150}}>Käyttäjät</h1>
+            <h1 style={{ fontWeight: 150 }}>Käyttäjät</h1>
             <div className="usersblock">
               {showUsers}
             </div>

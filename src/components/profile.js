@@ -28,7 +28,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
         return (
             <ul key={user.id} className="messageList">
                 <li className="messagefeed">
-                    <div className="name">{user.username}</div>
+                    <div className="name">{user.sender}</div>
                     <div className="message">{user.message}</div>
                 </li>
             </ul>
@@ -89,7 +89,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
                     setImageloaded(false)
                 }
             })
-        await axios.post('http://localhost:3001/save-image', { username: user, image: e.target.file.files[0].name.toLowerCase() })
+        await axios.post('http://localhost:3001/save-imagename', { username: user, image: e.target.file.files[0].name.toLowerCase() })
             .then(() => {
                 console.log(e.target.file.files[0].name)
             })

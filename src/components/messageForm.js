@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './styledComponents.css';
 
-const WriteMessage = ({ user, post, setPost, current, setMessages }) => {
+const WriteMessage = ({ user, post, setPost, current, setMessages, viewprofile }) => {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
 
@@ -11,11 +11,14 @@ const WriteMessage = ({ user, post, setPost, current, setMessages }) => {
         setError('')
     }
 
+    if(!viewprofile){
+        viewprofile = user;
+    }
 
     async function onSubmit(e) {
         e.preventDefault();
         if (message.length > 0) {
-            await axios.post('http://localhost:3001/sendmessages', { image: current.split("/")[4], username: user, message: message, date: new Date() })
+            await axios.post('http://localhost:3001/sendmessages', { image: current.split("/")[4], sender: user, receiver: viewprofile, message: message, date: new Date() })
                 .then(res => {
                     axios.post('http://localhost:3001/messages', { image: current })
                         .then(msg => {

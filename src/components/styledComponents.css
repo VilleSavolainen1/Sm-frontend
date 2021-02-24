@@ -222,6 +222,10 @@
     opacity: 1;
 }
 
+.bigImage{
+    border: 2px solid rgb(216, 216, 216);
+}
+
 .bigImage:hover{
     opacity: 0.9;
 }
