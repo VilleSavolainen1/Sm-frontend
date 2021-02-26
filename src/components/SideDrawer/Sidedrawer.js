@@ -18,15 +18,15 @@ const Sidedrawer = ({ user, onRouteChange, setShowsidebar, setUser }) => {
     return (
         <nav className="side-drawer">
             <ul className="link-list">
-                <li className="drawerlink"><a onClick={() => toggle('/home')}>Etusivu</a></li>
+                <li className="drawerlink"><span onClick={() => toggle('/home')}>Etusivu</span></li>
                 {user !== 'Vieras' ?
                     <div>
-                        <li className="drawerlink"><a onClick={() => toggle('/profile')}>Profiili</a></li>
-                        <li className="drawerlink"><a onClick={() => exit()}>Kirjaudu ulos</a></li>
+                        <li className="drawerlink"><span onClick={() => toggle('/profile')}>Profiili</span></li>
+                        <li className="drawerlink"><span onClick={() => exit()}>Kirjaudu ulos</span></li>
                     </div> :
                     <div>
-                        <li className="drawerlink"><a onClick={() => toggle('/signin')}>Kirjaudu</a></li>
-                        <li className="drawerlink"><a onClick={() => toggle('/register')}>Rekisteröidy!</a></li>
+                        <li className="drawerlink"><span onClick={() => toggle('/signin')}>Kirjaudu</span></li>
+                        <li className="drawerlink"><span onClick={() => toggle('/register')}>Rekisteröidy!</span></li>
                     </div>
                 }
 

@@ -17,7 +17,6 @@ const View = ({ viewprofile, images, user, post, setPost, imagemessages, setImag
 
 
     const showMessages = messages.map(user => {
-        const time = user.date.split("T")[0].split("-").reverse().join('.');
         return (
             <ul key={user.id} className="messageList">
                 <li className="messagefeed">

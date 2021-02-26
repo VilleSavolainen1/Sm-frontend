@@ -11,6 +11,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
     const [messages, setMessages] = useState([])
 
 
+
     //Show all images
     const showImages = images.map(i => {
         return (
@@ -24,7 +25,6 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
     
     //Get messages
     const showMessages = messages.map(user => {
-        const time = user.date.split("T")[0].split("-").reverse().join('.')
         return (
             <ul key={user.id} className="messageList">
                 <li className="messagefeed">

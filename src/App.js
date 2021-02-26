@@ -25,35 +25,34 @@ function App() {
   const [viewprofile, setViewprofile] = useState();
   const [imageLoaded, setImageloaded] = useState(false);
   const [profileUpdate, setProfileupdate] = useState(false);
-  const [usersList, setUserslist] = useState([]);
+  const [usersList, setUserslist] = useState();
   const [loading, setLoading] = useState(false);
   const [imagemessages, setImagemessages] = useState(null);
-  const [unseenmessages, setUnseenmessages] = useState();
-  const [messagecount, setMessagecount] = useState(0);
+  const [newmessages, setNewmessages] = useState([]);
+  const [messageChecked, setMessagechecked] = useState(false);
 
 
   let addresses = [];
   let users = [];
   let messages = [];
-  let showUsers = '';
+
+
+
+  useEffect(() => {
+    axios.post('http://localhost:3001/unread', { receiver: user })
+      .then(r => setNewmessages(r))
+  }, [user])
+
+
+
 
   useEffect(() => {
     axios.get('http://localhost:3001/users')
       .then(u => {
         users.push(u.data)
+        setUserslist(users)
         setLoading(true)
       })
-    setUserslist(users)
-  }, [])
-
-
-  useEffect(() => {
-    if(user !== 'Vieras'){
-      axios.post('http://localhost:3001/unseen', {receiver: username})
-      .then(r => {
-        setUnseenmessages(r)
-      })
-    }
   }, [user])
 
 
@@ -106,15 +105,17 @@ function App() {
     }
   }
 
-
-  if (loading) {
-    showUsers = usersList[0].map(profile => {
+  function showUsers() {
+    if (loading) {
       return (
-        <i key={profile} onClick={() => viewUser(profile)}>{profile}</i>
+        usersList[0].map(profile => {
+          return (
+            <i key={profile} onClick={() => viewUser(profile)}>{profile}</i>
+          )
+        })
       )
-    })
+    }
   }
-
 
 
   if (messages) {
@@ -157,7 +158,7 @@ function App() {
   return (
     <div className="container">
       <header id="header">
-        <Navigation user={user} setUser={setUser} onRouteChange={onRouteChange} unseenmessages={unseenmessages} messagecount={messagecount} setMessagecount={setMessagecount} />
+        <Navigation user={user} setUser={setUser} onRouteChange={onRouteChange} newmessages={newmessages} />
       </header>
       {user === 'Vieras' && route === '/signin' ?
         <Signin setUser={setUser} setRoute={setRoute} username={username} setUsername={setUsername} password={password} setPassword={setPassword} setError={setError} signIn={signIn} error={error} /> : null
@@ -171,7 +172,7 @@ function App() {
             <FrontPage user={user} setRoute={setRoute} />
             <h1 style={{ fontWeight: 150 }}>Käyttäjät</h1>
             <div className="usersblock">
-              {showUsers}
+              {showUsers()}
             </div>
           </div>
         </div> : null

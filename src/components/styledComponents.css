@@ -148,6 +148,7 @@
 
 .nav-links {
     margin-left: 25px;
+    display: flex;
 }
 
 
@@ -258,6 +259,39 @@
     max-width: 750px;
 }
 
+.newMessages {
+    margin-left: 20px;
+}
+
+.newMessagesSmallDevice{
+    display: none;
+}
+
+.newMessagesNumber{
+    color:#e2610b;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+}
+
+.newMessagesList{
+    background: #0f163d;
+    display: block;
+    z-index: 1002;
+    position: absolute;
+    top: 68px;
+    left: 250px;
+    width: auto;
+    border-radius: 3px;
+    color: greenyellow;
+}
+
+.newMessageListText{
+    margin-right: 35px;
+}
+
 
 @media(max-width: 800px){
     .bigImage{
@@ -320,6 +354,13 @@
     .messagebox{
         width: 100%;
         height: 100px;
+    }
+    .newMessagesSmallDevice{
+        margin-left: 20px;
+        display: inline;
+    }
+    .newMessages{
+        display: none;
     }
     
 }
