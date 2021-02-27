@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import WriteMessage from './messageForm';
 
 
-const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, setProfileupdate, post, setPost }) => {
+const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, setProfileupdate, post, setPost, loading, setLoading }) => {
 
     const [loadimage, setLoadimage] = useState(false);
     const [viewimage, setViewimage] = useState(false);
@@ -62,8 +62,6 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
                 }).catch(e => {
                     console.log(e)
                 })
-        } else {
-            console.log(false)
         }
     }
 
@@ -91,7 +89,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
             })
         await axios.post('http://localhost:3001/save-imagename', { username: user, image: e.target.file.files[0].name.toLowerCase() })
             .then(() => {
-                console.log(e.target.file.files[0].name)
+                !loading ? setLoading(true): setLoading(false)
             })
     }
 

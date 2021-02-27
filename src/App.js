@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     axios.post('http://localhost:3001/unread', { receiver: user })
       .then(r => setNewmessages(r))
-  }, [user])
+  }, [user, messageChecked])
 
 
 
@@ -158,7 +158,7 @@ function App() {
   return (
     <div className="container">
       <header id="header">
-        <Navigation user={user} setUser={setUser} onRouteChange={onRouteChange} newmessages={newmessages} />
+        <Navigation user={user} setUser={setUser} onRouteChange={onRouteChange} newmessages={newmessages} messageChecked={messageChecked} setMessagechecked={setMessagechecked} />
       </header>
       {user === 'Vieras' && route === '/signin' ?
         <Signin setUser={setUser} setRoute={setRoute} username={username} setUsername={setUsername} password={password} setPassword={setPassword} setError={setError} signIn={signIn} error={error} /> : null
@@ -180,7 +180,7 @@ function App() {
       {route === '/profile' ?
         <div className="body-content">
           <div className="center">
-            <Profile user={user} images={images} imageLoaded={imageLoaded} setImageloaded={setImageloaded} profileUpdate={profileUpdate} setProfileupdate={setProfileupdate} post={post} setPost={setPost} />
+            <Profile user={user} images={images} imageLoaded={imageLoaded} setImageloaded={setImageloaded} profileUpdate={profileUpdate} setProfileupdate={setProfileupdate} post={post} setPost={setPost} loading={loading} setLoading={setLoading} />
           </div>
         </div> : null
       }

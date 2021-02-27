@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './styledComponents.css';
 import Drawertoggle from './SideDrawer/Drawertoggle';
 import Sidedrawer from './SideDrawer/Sidedrawer';
+import axios from 'axios';
 
-const Navigation = ({ user, setUser, onRouteChange, newmessages }) => {
+const Navigation = ({ user, setUser, onRouteChange, newmessages, messageChecked, setMessagechecked }) => {
 
     const [showSidebar, setShowsidebar] = useState(false);
     const [showmessageinfo, setShowmessageinfo] = useState(false);
@@ -13,14 +14,33 @@ const Navigation = ({ user, setUser, onRouteChange, newmessages }) => {
         !showmessageinfo ? setShowmessageinfo(true) : setShowmessageinfo(false)
     }
 
+    function messageIsChecked(id) {
+        axios.post('http://localhost:3001/read', { id: id })
+        !messageChecked ? setMessagechecked(true) : setMessagechecked(false)
+    }
+
 
     function getNumberOfNewMessages() {
+        let count = 0;
         if (newmessages.data) {
-            return (
-                newmessages.data.length
-            )
+            if (newmessages.data.length === 0) {
+                return (
+                    null
+                )
+            } else {
+                newmessages.data.map(num => {
+                    if (num.sender !== num.receiver) {
+                        count++;
+                    }
+                })
+            }
+            if(count === 0){
+                return null
+            }else{
+                return count;
+            }
         } else {
-            return 0;
+            return null;
         }
     }
 
@@ -29,11 +49,13 @@ const Navigation = ({ user, setUser, onRouteChange, newmessages }) => {
         if (newmessages.data) {
             return (
                 newmessages.data.map(info => {
-                    return (
-                        <ul key={info.id}>
-                            <li style={{ listStyle: 'none', fontWeight: 550 }}><i>{info.sender} kommentoi kuvaasi {info.image}</i></li>
-                        </ul>
-                    )
+                    if (info.sender !== info.receiver) {
+                        return (
+                            <ul key={info.id}>
+                                <li style={{ listStyle: 'none', fontWeight: 500, cursor: 'pointer' }}><i onClick={() => messageIsChecked(info.id)}>{info.sender} kommentoi kuvaasi {info.image}</i></li>
+                            </ul>
+                        )
+                    }
                 })
             )
         }
@@ -56,7 +78,7 @@ const Navigation = ({ user, setUser, onRouteChange, newmessages }) => {
                         {user !== 'Vieras' ?
                             <div>
                                 <span id="username">{user}</span>
-                                <div className="newMessagesSmallDevice">Uudet viestit: <button className="newMessagesNumber" onClick={() => showMessageSwitch()}>{getNumberOfNewMessages()}</button></div>
+                                <div className="newMessagesSmallDevice" onClick={() => showMessageSwitch()}>Uudet viestit: <button className="newMessagesNumber">{getNumberOfNewMessages()}</button></div>
                                 <div className="newMessagesList">
                                     <div className="newMessageListText">
                                         {showmessageinfo ? getNewMessageInfo() : null}
