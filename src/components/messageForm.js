@@ -18,9 +18,9 @@ const WriteMessage = ({ user, post, setPost, current, setMessages, viewprofile }
     async function onSubmit(e) {
         e.preventDefault();
         if (message.length > 0) {
-            await axios.post('http://localhost:3001/sendmessages', { image: current.split("/")[4], sender: user, receiver: viewprofile, message: message, date: new Date() })
+            await axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/sendmessages', { image: current.split("/")[4], sender: user, receiver: viewprofile, message: message, date: new Date() })
                 .then(res => {
-                    axios.post('http://localhost:3001/messages', { image: current })
+                    axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/messages', { image: current })
                         .then(msg => {
                             setMessages(msg.data)
                         })

@@ -13,7 +13,7 @@ const Register = ({ setRoute, setUser }) => {
     async function onSubmit(e) {
         e.preventDefault();
         if (passw === confirmpassword && usern.length > 0) {
-            await axios.post('http://localhost:3001/register', { username: usern, password: passw, email: email })
+            await axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/register', { username: usern, password: passw, email: email })
             .then(res => {
                 setUser(usern)
                 setRoute('/home');
