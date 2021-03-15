@@ -15,7 +15,7 @@ const Navigation = ({ user, setUser, onRouteChange, newmessages, messageChecked,
     }
 
     function messageIsChecked(id) {
-        axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/read', { id: id })
+        axios.post('/read', { id: id })
         !messageChecked ? setMessagechecked(true) : setMessagechecked(false)
     }
 

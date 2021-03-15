@@ -39,7 +39,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/unread', { receiver: user })
+    axios.post('/unread', { receiver: user })
       .then(r => setNewmessages(r))
   }, [user, messageChecked])
 
@@ -47,7 +47,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/users')
+    axios.get('/users')
       .then(u => {
         users.push(u.data)
         setUserslist(users)
@@ -59,10 +59,10 @@ function App() {
 
   useEffect(() => {
     if (user !== 'Vieras' && route !== '/viewprofile') {
-      axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/imagenames', { username: user })
+      axios.post('/imagenames', { username: user })
         .then(res => {
           res.data.map(name => {
-            addresses.push('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/images/' + name)
+            addresses.push('/images/' + name)
           })
           setImages(addresses)
         })
@@ -93,10 +93,10 @@ function App() {
     if (usr === user) {
       setRoute('/profile')
     } else {
-      await axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/imagenames', { username: usr })
+      await axios.post('/imagenames', { username: usr })
         .then(res => {
           res.data.map(name => {
-            addresses.push('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/images/' + name)
+            addresses.push('/images/' + name)
           })
           setImages(addresses)
         })
@@ -131,7 +131,7 @@ function App() {
     if (username.length === 0 || password.length === 0) {
       setError("Anna käyttäjänimi ja salasana!")
     } else {
-      axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/signin', { username: username, password: password })
+      axios.post('/signin', { username: username, password: password })
         .then(res => {
           if (res.status === 200) {
             setRoute('/home')

@@ -39,7 +39,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
     //Show image and get messages
     const bigImage = (img) => {
         setCurrent(img)
-        axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/messages', { image: img })
+        axios.post('/messages', { image: img })
             .then(msg => {
                 setMessages(msg.data)
             })
@@ -54,10 +54,10 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
 
     const deleteImage = async () => {
         if (window.confirm("Haluatko poistaa tämän kuvan?")) {
-            await axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/delete', { imagename: current.split('/')[4], username: user })
+            await axios.post('/delete', { imagename: current.split('/')[4], username: user })
                 .then(res => {
                     setViewimage(false)
-                    axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/deletemessage', { image: current.split("/")[4] })
+                    axios.post('/deletemessage', { image: current.split("/")[4] })
                     !profileUpdate ? setProfileupdate(true) : setProfileupdate(false)
                 }).catch(e => {
                     console.log(e)
@@ -77,7 +77,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
         e.preventDefault();
         const data = new FormData();
         data.append("file", e.target.file.files[0])
-        await axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/save-image', data)
+        await axios.post('/save-image', data)
             .then(() => {
                 setLoadimage(false);
                 !profileUpdate ? setProfileupdate(true) : setProfileupdate(false);
@@ -87,7 +87,7 @@ const Profile = ({ user, images, imageLoaded, setImageloaded, profileUpdate, set
                     setImageloaded(false)
                 }
             })
-        await axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/save-imagename', { username: user, image: e.target.file.files[0].name.toLowerCase() })
+        await axios.post('/save-imagename', { username: user, image: e.target.file.files[0].name.toLowerCase() })
             .then(() => {
                 !loading ? setLoading(true): setLoading(false)
             })

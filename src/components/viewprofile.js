@@ -31,7 +31,7 @@ const View = ({ viewprofile, images, user, post, setPost, imagemessages, setImag
     const bigImage = (img) => {
         setCurrent(img)
         setImagemessages(img)
-        axios.post('http://ec2-13-53-201-232.eu-north-1.compute.amazonaws.com:3001/messages', { image: img })
+        axios.post('/messages', { image: img })
             .then(msg => {
                 setMessages(msg.data)
             })
